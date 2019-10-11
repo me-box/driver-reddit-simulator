@@ -70,13 +70,13 @@ app.get('/status', function (req, res) {
   res.send('active');
 });
 
-const balance = databox.NewDataSourceMetadata();
-balance.Description = 'Reddit Simulator data';
-balance.ContentType = 'application/json';
-balance.Vendor = 'Databox Inc.';
-balance.DataSourceType = 'redditSimulatorData';
-balance.DataSourceID = 'redditSimulatorData';
-balance.StoreType = 'ts/blob';
+const redditData = databox.NewDataSourceMetadata();
+redditData.Description = 'Reddit Simulator data';
+redditData.ContentType = 'application/json';
+redditData.Vendor = 'Databox Inc.';
+redditData.DataSourceType = 'redditSimulatorData';
+redditData.DataSourceID = 'redditSimulatorData';
+redditData.StoreType = 'ts/blob';
 
 const driverSettings = databox.NewDataSourceMetadata();
 driverSettings.Description = 'Reddit Simulator driver settings';
@@ -86,7 +86,7 @@ driverSettings.DataSourceType = 'redditSimulatorSettings';
 driverSettings.DataSourceID = 'redditSimulatorSettings';
 driverSettings.StoreType = 'kv';
 
-store.RegisterDatasource(balance)
+store.RegisterDatasource(redditData)
   .then(() => {
     return store.RegisterDatasource(driverSettings);
   })
