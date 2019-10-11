@@ -51,6 +51,7 @@ app.get('/ui/saveConfiguration', (req, res) => {
       // read data based on the client_id and save as json
       const redditData = fs.readFileSync('src/reddit-data/' + client_id, 'utf8');
       const redditArray = redditData.split('\n');
+      console.log('Reddit data loaded with length: ' + redditArray.length);
       save('redditSimulatorData', JSON.stringify(redditArray));
 
       setSettings(settings)
