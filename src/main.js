@@ -18,6 +18,7 @@ try {
 } catch (e) {
   RedditSimulatorDefaultSettings = {
     'client_id': '_davros',
+    'hostname': '127.0.0.1',
   };
 }
 
@@ -35,10 +36,11 @@ const ui_template = fs.readFileSync('src/views/ui.html', 'utf8');
 app.get('/ui', function (req, res) {
   getSettings()
     .then((settings) => {
-      const { client_id } = settings;
+      const { client_id, hostname } = settings;
       res.type('html');
       const html = ui_template
-        .replace('__CLIENT_ID__', client_id);
+        .replace('__CLIENT_ID__', client_id)
+        .replace('__HOSTNAME__', hostname);
       res.send(html);
     });
 });
